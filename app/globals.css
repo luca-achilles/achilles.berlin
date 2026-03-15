@@ -1,26 +1,45 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@theme {
+    --font-poppins: var(--font-poppins);
+    --color-primary: #9333EA;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+    --animate-ticker: ticker 10s linear infinite;
+    @keyframes ticker {
+        0% {
+            transform: translate3d(0, 0, 0);
+        }
+        100% {
+            transform: translate3d(-100%, 0, 0);
+        }
+    }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+    --animate-leaf: leaf 360ms ease-out forwards;
+    @keyframes leaf {
+        0% {
+            transform: scale(0);
+            opacity: 0;
+        }
+        100% {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+    --animate-leaf-branch: leaf-branch 1250ms linear forwards;
+    @keyframes leaf-branch {
+        to {
+            stroke-dashoffset: 0;
+        }
+    }
+
+    --animate-pushdown: pushdown 1s ease-in-out infinite;
+    @keyframes pushdown {
+        0%, 100% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(5px);
+        }
+    }
 }

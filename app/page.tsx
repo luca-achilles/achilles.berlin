@@ -1,65 +1,56 @@
-import Image from "next/image";
+import IconDark from "@/components/IconDark";
+import ScrollDownIndicator from "@/components/ScrollDownIndicator";
+import MailLink from "@/components/MailLink";
 
-export default function Home() {
-  return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+const texts = [
+    "my name is luca, i live on the second floor",
+    "i'm the moment between the strikin' and the fire",
+    "you know i need you here",
+    "i been feeling it since 1966 now",
+    "they're talking about you, boy",
+];
+
+export default function Page() {
+    return (
+        <div className={"flex flex-col items-center bg-white text-black dark:bg-black dark:text-white selection:bg-primary font-poppins overflow-x-clip"}>
+            <div className={"h-6 w-screen bg-black text-white dark:bg-white dark:text-black cursor-pointer select-none"}>
+                <div className={"flex w-screen"}>
+                    {[...new Array(3).keys()].map((key =>
+                        <div key={key} className={"animate-ticker flex justify-between gap-x-5 text-base font-medium text-nowrap"}>
+                            {[...new Array(texts.length * 2).keys()].map(((key, i) => {
+                                if (i % 2 === 0) {
+                                    return <p key={key} className="uppercase">{texts[i / 2]}</p>;
+                                }
+
+                                return <p key={key}>{"━"}</p>;
+                            }))}
+                            <div />
+                        </div>
+                    ))}
+                </div>
+            </div>
+
+            <div className={'grid w-svw h-svh min-h-100 pb-10'}>
+                <div className={"flex flex-col self-center col-start-1 row-start-1 items-center gap-y-12"}>
+                    <IconDark className={"size-30"} />
+                    <p className={"text-6xl font-semibold"}>achilles.berlin</p>
+                </div>
+                <div className={"self-end justify-self-center col-start-1 row-start-1"}>
+                    <ScrollDownIndicator />
+                </div>
+            </div>
+
+            <div className={"flex flex-col items-center w-screen py-30"}>
+                <div className={"flex flex-col items-center gap-y-2"}>
+                    <p className={"text-3xl"}>Send me a mail:</p>
+                    <MailLink />
+                </div>
+                <svg className={"w-full self-start pr-[10%] text-black dark:text-white"} viewBox="0 0 1720 364" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 272.585C0 272.585 207.5 367.586 478.5 241.586C749.5 115.586 990.769 279.645 1222 349.586C1465 423.086 1626 118.586 1626 118.586" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeDasharray="24 32"/>
+                    <path d="M1681.26 110.622C1681.58 111.044 1682.02 111.357 1682.53 111.519C1683.04 111.681 1683.58 111.684 1684.09 111.528C1684.6 111.373 1685.04 111.065 1685.37 110.647C1685.7 110.23 1685.89 109.721 1685.92 109.191L1691.96 4.77625C1692 4.28695 1691.9 3.79733 1691.66 3.36468C1691.43 2.93203 1691.08 2.57426 1690.66 2.33321C1690.23 2.09216 1689.74 1.97781 1689.25 2.00355C1688.76 2.02928 1688.29 2.19403 1687.89 2.47852L1601.66 61.6622C1601.22 61.9632 1600.88 62.3909 1600.69 62.888C1600.51 63.3851 1600.48 63.9277 1600.6 64.443C1600.73 64.9584 1601.02 65.4217 1601.42 65.771C1601.82 66.1202 1602.32 66.3385 1602.85 66.3967L1647.08 71.2602C1648.48 71.4132 1649.83 71.8477 1651.05 72.5375C1652.28 73.2273 1653.35 74.1582 1654.21 75.2739L1681.26 110.622Z" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M1690.65 2.35892L1651.06 72.5407" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+            </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
-  );
+    );
 }

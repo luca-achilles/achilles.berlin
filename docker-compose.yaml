@@ -1,0 +1,13 @@
+services:
+  achilles-berlin:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: nextjs-standalone-bun-image
+    container_name: achilles-berlin-container
+    environment:
+      NODE_ENV: production
+      PORT: "3000"
+    ports:
+      - "3000:3000"
+    restart: unless-stopped

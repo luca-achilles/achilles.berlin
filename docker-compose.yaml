@@ -5,9 +5,20 @@ services:
       dockerfile: Dockerfile
     image: nextjs-standalone-bun-image
     container_name: achilles-berlin-container
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.achilles-berlin.rule=Host(`achilles.berlin`)
+      - traefik.http.routers.achilles-berlin.entrypoints=websecure
+      - traefik.http.routers.achilles-berlin.tls.certresolver=lets-encrypt
+      - traefik.http.services.achilles-berlin.loadbalancer.server.port=8080
+      - traefik.docker.network=web
+    networks:
+      - web
     environment:
       NODE_ENV: production
-      PORT: "3000"
-    ports:
-      - "3000:3000"
+      PORT: "8080"
     restart: unless-stopped
+
+networks:
+  web:
+    external: true

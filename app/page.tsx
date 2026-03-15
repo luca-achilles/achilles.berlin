@@ -22,7 +22,7 @@ export default function Page() {
                                     return <p key={key} className="uppercase">{texts[i / 2]}</p>;
                                 }
 
-                                return <div key={key} className={"w-4 h-0.5 rounded-full bg-black"} />;
+                                return <div key={key} className={"w-4 h-0.5 rounded-full bg-white dark:bg-black"} />;
                             }))}
                             <div />
                         </div>

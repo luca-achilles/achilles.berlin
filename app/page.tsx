@@ -16,13 +16,13 @@ export default function Page() {
             <div className={"h-6 w-screen bg-black text-white dark:bg-white dark:text-black cursor-pointer select-none"}>
                 <div className={"flex w-screen"}>
                     {[...new Array(3).keys()].map((key =>
-                        <div key={key} className={"animate-ticker flex justify-between gap-x-5 text-base font-medium text-nowrap"}>
+                        <div key={key} className={"animate-ticker flex justify-between items-center gap-x-5 text-base font-medium text-nowrap"}>
                             {[...new Array(texts.length * 2).keys()].map(((key, i) => {
                                 if (i % 2 === 0) {
                                     return <p key={key} className="uppercase">{texts[i / 2]}</p>;
                                 }
 
-                                return <p key={key}>{"━"}</p>;
+                                return <div key={key} className={"w-4 h-0.5 rounded-full bg-black"} />;
                             }))}
                             <div />
                         </div>

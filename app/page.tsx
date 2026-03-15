@@ -1,34 +1,12 @@
 import IconDark from "@/components/IconDark";
 import ScrollDownIndicator from "@/components/ScrollDownIndicator";
 import MailLink from "@/components/MailLink";
-
-const texts = [
-    "my name is luca, i live on the second floor",
-    "i'm the moment between the strikin' and the fire",
-    "you know i need you here",
-    "i been feeling it since 1966 now",
-    "they're talking about you, boy",
-];
+import TickerContainer from "@/components/TickerContainer";
 
 export default function Page() {
     return (
         <div className={"flex flex-col items-center bg-white text-black dark:bg-black dark:text-white selection:bg-primary font-poppins overflow-x-clip"}>
-            <div className={"h-6 w-screen bg-black text-white dark:bg-white dark:text-black cursor-pointer select-none"}>
-                <div className={"flex w-screen"}>
-                    {[...new Array(3).keys()].map((key =>
-                        <div key={key} className={"animate-ticker flex justify-between items-center gap-x-5 text-base font-medium text-nowrap"}>
-                            {[...new Array(texts.length * 2).keys()].map(((key, i) => {
-                                if (i % 2 === 0) {
-                                    return <p key={key} className="uppercase">{texts[i / 2]}</p>;
-                                }
-
-                                return <div key={key} className={"w-4 h-0.5 rounded-full bg-white dark:bg-black"} />;
-                            }))}
-                            <div />
-                        </div>
-                    ))}
-                </div>
-            </div>
+            <TickerContainer />
 
             <div className={'grid w-svw h-svh min-h-100 pb-10'}>
                 <div className={"flex flex-col self-center col-start-1 row-start-1 items-center gap-y-12"}>

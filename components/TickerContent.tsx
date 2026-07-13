@@ -1,10 +1,4 @@
-const quotes = [
-  'my name is luca, i live on the second floor',
-  "i'm the moment between the strikin' and the fire",
-  'you know i need you here',
-  'i been feeling it since 1966 now',
-  "they're talking about you, boy",
-];
+import quotes from '../app/lyrics/songquotes.json';
 
 export default function TickerContent() {
   return (
@@ -20,7 +14,7 @@ export default function TickerContent() {
             if (i % 2 === 0) {
               return (
                 <p key={key} className="uppercase">
-                  {quotes[i / 2]}
+                  {quotes[i / 2].quote}
                 </p>
               );
             }

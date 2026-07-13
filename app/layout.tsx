@@ -6,7 +6,7 @@ import { ReactNode } from 'react';
 const poppins = Poppins({
   variable: '--font-poppins',
   subsets: ['latin'],
-  weight: ['500', '600'], // 400 font-normal, font-medium font-semibold
+  weight: ['300', '500', '600'], // 400 font-normal, font-medium font-semibold
 });
 
 export const metadata: Metadata = {

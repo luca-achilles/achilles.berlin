@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Poppins } from 'next/font/google';
 import './globals.css';
 import { ReactNode } from 'react';
+import PlausibleProvider from 'next-plausible';
 
 const poppins = Poppins({
   variable: '--font-poppins',
@@ -33,7 +34,9 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
-      <body className={`${poppins.variable} antialiased`}>{children}</body>
+      <PlausibleProvider>
+        <body className={`${poppins.variable} antialiased`}>{children}</body>
+      </PlausibleProvider>
     </html>
   );
 }
